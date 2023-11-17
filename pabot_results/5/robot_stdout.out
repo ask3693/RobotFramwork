@@ -1,0 +1,72 @@
+==============================================================================
+Tests                                                                         
+==============================================================================
+Tests.testDemo6 :: To validate the shopping page                              
+==============================================================================
+Unsuccessful login validation                                         | PASS |
+------------------------------------------------------------------------------
+Validate cards displayed in the shopping page                           
+  Traceback (most recent call last):
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  D:\Learning\RobotFramework Learning\tests\testDemo6.robot:27
+    T:  Validate cards displayed in the shopping page    
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  D:\Learning\RobotFramework Learning\tests\testDemo6.robot:30
+      Wait until Element is located on the page    
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  D:\Learning\RobotFramework Learning\tests\Generic.robot:20
+      Wait Until Element Is Visible    ${shop_page_load_check}
+      |  ${shop_page_load_check} = css:.nav-link (str)
+______________________________________________________________________________
+| FAIL |
+Element 'css:.nav-link' not visible after 5 seconds.
+------------------------------------------------------------------------------
+Select the form and navigate to child window                            
+  Traceback (most recent call last):
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  D:\Learning\RobotFramework Learning\tests\testDemo6.robot:37
+    T:  Select the form and navigate to child window    
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  D:\Learning\RobotFramework Learning\tests\testDemo6.robot:39
+      Fill the login details with user option    rahulshettyacademy    learning
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  D:\Learning\RobotFramework Learning\PageObjects\LandingPage.robot:30
+      Click Element    okayBtn
+______________________________________________________________________________
+| FAIL |
+ElementClickInterceptedException: Message: element click intercepted: Element <button type="button" id="okayBtn" class="btn btn-success" autofocus="">...</button> is not clickable at point (47, 19). Other element would receive the click: <h3 class="text-center pt-5">...</h3>
+  (Session info: chrome=119.0.6045.106)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6AD3B82B2+55298]
+	(No symbol) [0x00007FF6AD325E02]
+	(No symbol) [0x00007FF6AD1E05AB]
+	(No symbol) [0x00007FF6AD227A77]
+	(No symbol) [0x00007FF6AD225E39]
+	(No symbol) [0x00007FF6AD223C08]
+	(No symbol) [0x00007FF6AD222C8A]
+	(No symbol) [0x00007FF6AD2187BF]
+	(No symbol) [0x00007FF6AD2420AA]
+	(No symbol) [0x00007FF6AD2180CF]
+	(No symbol) [0x00007FF6AD2422C0]
+	(No symbol) [0x00007FF6AD25AAA4]
+	(No symbol) [0x00007FF6AD241E83]
+	(No symbol) [0x00007FF6AD21670A]
+	(No symbol) [0x00007FF6AD217964]
+	GetHandleVerifier [0x00007FF6AD730AAB+3694587]
+	GetHandleVerifier [0x00007FF6AD78728E+4048862]
+	GetHandleVerifier [0x00007FF6AD77F173+4015811]
+	GetHandleVerifier [0x00007FF6AD4547D6+695590]
+	(No symbol) [0x00007FF6AD330CE8]
+	(No symbol) [0x00007FF6AD32CF34]
+	(No symbol) [0x00007FF6AD32D062]
+	(No symbol) [0x00007FF6AD31D3A3]
+	BaseThreadInitThunk [0x00007FFACEEF7614+20]
+	RtlUserThreadStart [0x00007FFACF7E26B1+33]
+------------------------------------------------------------------------------
+Tests.testDemo6 :: To validate the shopping page                      | FAIL |
+3 tests, 1 passed, 2 failed
+==============================================================================
+Tests                                                                 | FAIL |
+3 tests, 1 passed, 2 failed
+==============================================================================
+Output:  D:\Learning\RobotFramework Learning\tests\pabot_results\5\output.xml

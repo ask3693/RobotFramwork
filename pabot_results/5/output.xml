@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231110 17:25:43.057" rpa="false" schemaversion="4">
+<suite id="s1" name="Tests" source="D:\Learning\RobotFramework Learning\tests">
+<suite id="s1-s1" name="testDemo6" source="D:\Learning\RobotFramework Learning\tests\testDemo6.robot">
+<test id="s1-s1-t1" name="Unsuccessful login validation" line="21">
+<kw name="Open The Browser With This URL" library="Generic" type="SETUP">
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20231110 17:25:46.275" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20231110 17:25:46.275" endtime="20231110 17:26:18.482"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20231110 17:26:18.483" level="INFO">Opening url 'https://rahulshettyacademy.com/loginpagePractise/'</msg>
+<status status="PASS" starttime="20231110 17:26:18.482" endtime="20231110 17:26:30.285"/>
+</kw>
+<status status="PASS" starttime="20231110 17:25:46.273" endtime="20231110 17:26:30.285"/>
+</kw>
+<kw name="Fill the login form" library="LandingPage">
+<arg>${UserName}</arg>
+<arg>${pwd_wrong}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231110 17:26:30.292" level="INFO">Typing text 'rahulshettyacademy' into text field 'id:username'.</msg>
+<status status="PASS" starttime="20231110 17:26:30.289" endtime="20231110 17:26:34.544"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20231110 17:26:34.547" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg timestamp="20231110 17:26:34.752" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20231110 17:26:35.166" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20231110 17:26:34.546" endtime="20231110 17:26:35.167"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>signInBtn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231110 17:26:35.170" level="INFO">Clicking button 'signInBtn'.</msg>
+<status status="PASS" starttime="20231110 17:26:35.168" endtime="20231110 17:26:36.038"/>
+</kw>
+<status status="PASS" starttime="20231110 17:26:30.287" endtime="20231110 17:26:36.038"/>
+</kw>
+<kw name="Wait until Element is located on the page" library="LandingPage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${Login_Error_Message}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231110 17:26:36.040" endtime="20231110 17:26:38.414"/>
+</kw>
+<status status="PASS" starttime="20231110 17:26:36.039" endtime="20231110 17:26:38.414"/>
+</kw>
+<kw name="Validate the error message" library="LandingPage">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${Login_Error_Message}</arg>
+<arg>Incorrect username/password.</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20231110 17:26:38.420" level="INFO">Verifying element 'css:.alert-danger' contains exact text 'Incorrect username/password.'.</msg>
+<status status="PASS" starttime="20231110 17:26:38.417" endtime="20231110 17:26:38.614"/>
+</kw>
+<status status="PASS" starttime="20231110 17:26:38.415" endtime="20231110 17:26:38.614"/>
+</kw>
+<tag>Regression</tag>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20231110 17:25:46.270" endtime="20231110 17:26:38.615"/>
+</test>
+<test id="s1-s1-t2" name="Validate cards displayed in the shopping page" line="27">
+<kw name="Open The Browser With This URL" library="Generic" type="SETUP">
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20231110 17:26:38.621" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20231110 17:26:38.621" endtime="20231110 17:26:47.249"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20231110 17:26:47.254" level="INFO">Opening url 'https://rahulshettyacademy.com/loginpagePractise/'</msg>
+<status status="PASS" starttime="20231110 17:26:47.253" endtime="20231110 17:26:54.275"/>
+</kw>
+<status status="PASS" starttime="20231110 17:26:38.618" endtime="20231110 17:26:54.276"/>
+</kw>
+<kw name="Fill the login form" library="LandingPage">
+<arg>${UserName}</arg>
+<arg>${pwd_valid}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231110 17:26:54.282" level="INFO">Typing text 'rahulshettyacademy' into text field 'id:username'.</msg>
+<status status="PASS" starttime="20231110 17:26:54.278" endtime="20231110 17:26:55.504"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20231110 17:26:55.508" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg timestamp="20231110 17:26:55.961" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20231110 17:26:57.279" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20231110 17:26:55.505" endtime="20231110 17:26:57.280"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>signInBtn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231110 17:26:57.284" level="INFO">Clicking button 'signInBtn'.</msg>
+<status status="PASS" starttime="20231110 17:26:57.282" endtime="20231110 17:26:59.304"/>
+</kw>
+<status status="PASS" starttime="20231110 17:26:54.276" endtime="20231110 17:26:59.304"/>
+</kw>
+<kw name="Wait until Element is located on the page" library="Generic">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${shop_page_load_check}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<msg timestamp="20231110 17:27:15.980" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231110 17:27:15.981" level="FAIL">Element 'css:.nav-link' not visible after 5 seconds.</msg>
+<status status="FAIL" starttime="20231110 17:26:59.306" endtime="20231110 17:27:15.995"/>
+</kw>
+<status status="FAIL" starttime="20231110 17:26:59.305" endtime="20231110 17:27:15.998"/>
+</kw>
+<kw name="Verify card titles in the shop page" library="ShopPage">
+<status status="NOT RUN" starttime="20231110 17:27:15.998" endtime="20231110 17:27:15.999"/>
+</kw>
+<kw name="Hello World" library="Shop">
+<status status="NOT RUN" starttime="20231110 17:27:15.999" endtime="20231110 17:27:16.000"/>
+</kw>
+<kw name="Add Items To Cart And Checkout" library="Shop">
+<arg>${listofProducts}</arg>
+<status status="NOT RUN" starttime="20231110 17:27:16.000" endtime="20231110 17:27:16.001"/>
+</kw>
+<kw name="Verify Items in the cart and proceed" library="CheckoutPage">
+<arg>${listofProducts}</arg>
+<status status="NOT RUN" starttime="20231110 17:27:16.002" endtime="20231110 17:27:16.002"/>
+</kw>
+<tag>Feature1</tag>
+<status status="FAIL" starttime="20231110 17:26:38.616" endtime="20231110 17:27:16.002">Element 'css:.nav-link' not visible after 5 seconds.</status>
+</test>
+<test id="s1-s1-t3" name="Select the form and navigate to child window" line="37">
+<kw name="Open The Browser With This URL" library="Generic" type="SETUP">
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20231110 17:27:16.009" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20231110 17:27:16.008" endtime="20231110 17:27:27.733"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20231110 17:27:27.734" level="INFO">Opening url 'https://rahulshettyacademy.com/loginpagePractise/'</msg>
+<status status="PASS" starttime="20231110 17:27:27.733" endtime="20231110 17:27:34.646"/>
+</kw>
+<status status="PASS" starttime="20231110 17:27:16.005" endtime="20231110 17:27:34.646"/>
+</kw>
+<kw name="Fill the login details with user option" library="LandingPage">
+<arg>rahulshettyacademy</arg>
+<arg>learning</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231110 17:27:34.651" level="INFO">Typing text 'rahulshettyacademy' into text field 'id:username'.</msg>
+<status status="PASS" starttime="20231110 17:27:34.648" endtime="20231110 17:27:35.176"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20231110 17:27:35.178" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg timestamp="20231110 17:27:35.296" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20231110 17:27:35.496" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20231110 17:27:35.176" endtime="20231110 17:27:35.496"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:input[value='user']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231110 17:27:35.498" level="INFO">Clicking element 'css:input[value='user']'.</msg>
+<status status="PASS" starttime="20231110 17:27:35.498" endtime="20231110 17:27:35.724"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>okayBtn</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231110 17:27:35.724" endtime="20231110 17:27:36.126"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>okayBtn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231110 17:27:36.129" level="INFO">Clicking element 'okayBtn'.</msg>
+<status status="PASS" starttime="20231110 17:27:36.127" endtime="20231110 17:27:36.328"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>okayBtn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231110 17:27:36.331" level="INFO">Clicking element 'okayBtn'.</msg>
+<msg timestamp="20231110 17:27:38.423" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20231110 17:27:38.423" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element &lt;button type="button" id="okayBtn" class="btn btn-success" autofocus=""&gt;...&lt;/button&gt; is not clickable at point (47, 19). Other element would receive the click: &lt;h3 class="text-center pt-5"&gt;...&lt;/h3&gt;
+  (Session info: chrome=119.0.6045.106)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6AD3B82B2+55298]
+	(No symbol) [0x00007FF6AD325E02]
+	(No symbol) [0x00007FF6AD1E05AB]
+	(No symbol) [0x00007FF6AD227A77]
+	(No symbol) [0x00007FF6AD225E39]
+	(No symbol) [0x00007FF6AD223C08]
+	(No symbol) [0x00007FF6AD222C8A]
+	(No symbol) [0x00007FF6AD2187BF]
+	(No symbol) [0x00007FF6AD2420AA]
+	(No symbol) [0x00007FF6AD2180CF]
+	(No symbol) [0x00007FF6AD2422C0]
+	(No symbol) [0x00007FF6AD25AAA4]
+	(No symbol) [0x00007FF6AD241E83]
+	(No symbol) [0x00007FF6AD21670A]
+	(No symbol) [0x00007FF6AD217964]
+	GetHandleVerifier [0x00007FF6AD730AAB+3694587]
+	GetHandleVerifier [0x00007FF6AD78728E+4048862]
+	GetHandleVerifier [0x00007FF6AD77F173+4015811]
+	GetHandleVerifier [0x00007FF6AD4547D6+695590]
+	(No symbol) [0x00007FF6AD330CE8]
+	(No symbol) [0x00007FF6AD32CF34]
+	(No symbol) [0x00007FF6AD32D062]
+	(No symbol) [0x00007FF6AD31D3A3]
+	BaseThreadInitThunk [0x00007FFACEEF7614+20]
+	RtlUserThreadStart [0x00007FFACF7E26B1+33]
+</msg>
+<status status="FAIL" starttime="20231110 17:27:36.329" endtime="20231110 17:27:38.435"/>
+</kw>
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>okayBtn</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="NOT RUN" starttime="20231110 17:27:38.435" endtime="20231110 17:27:38.436"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>css:select.form-control</arg>
+<arg>teach</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<status status="NOT RUN" starttime="20231110 17:27:38.436" endtime="20231110 17:27:38.437"/>
+</kw>
+<kw name="Select Checkbox" library="SeleniumLibrary">
+<arg>terms</arg>
+<doc>Selects the checkbox identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20231110 17:27:38.437" endtime="20231110 17:27:38.438"/>
+</kw>
+<kw name="Checkbox Should Be Selected" library="SeleniumLibrary">
+<arg>terms</arg>
+<doc>Verifies checkbox ``locator`` is selected/checked.</doc>
+<status status="NOT RUN" starttime="20231110 17:27:38.438" endtime="20231110 17:27:38.439"/>
+</kw>
+<status status="FAIL" starttime="20231110 17:27:34.647" endtime="20231110 17:27:38.439"/>
+</kw>
+<tag>Regression</tag>
+<status status="FAIL" starttime="20231110 17:27:16.004" endtime="20231110 17:27:38.440">ElementClickInterceptedException: Message: element click intercepted: Element &lt;button type="button" id="okayBtn" class="btn btn-success" autofocus=""&gt;...&lt;/button&gt; is not clickable at point (47, 19). Other element would receive the click: &lt;h3 class="text-center pt-5"&gt;...&lt;/h3&gt;
+  (Session info: chrome=119.0.6045.106)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6AD3B82B2+55298]
+	(No symbol) [0x00007FF6AD325E02]
+	(No symbol) [0x00007FF6AD1E05AB]
+	(No symbol) [0x00007FF6AD227A77]
+	(No symbol) [0x00007FF6AD225E39]
+	(No symbol) [0x00007FF6AD223C08]
+	(No symbol) [0x00007FF6AD222C8A]
+	(No symbol) [0x00007FF6AD2187BF]
+	(No symbol) [0x00007FF6AD2420AA]
+	(No symbol) [0x00007FF6AD2180CF]
+	(No symbol) [0x00007FF6AD2422C0]
+	(No symbol) [0x00007FF6AD25AAA4]
+	(No symbol) [0x00007FF6AD241E83]
+	(No symbol) [0x00007FF6AD21670A]
+	(No symbol) [0x00007FF6AD217964]
+	GetHandleVerifier [0x00007FF6AD730AAB+3694587]
+	GetHandleVerifier [0x00007FF6AD78728E+4048862]
+	GetHandleVerifier [0x00007FF6AD77F173+4015811]
+	GetHandleVerifier [0x00007FF6AD4547D6+695590]
+	(No symbol) [0x00007FF6AD330CE8]
+	(No symbol) [0x00007FF6AD32CF34]
+	(No symbol) [0x00007FF6AD32D062]
+	(No symbol) [0x00007FF6AD31D3A3]
+	BaseThreadInitThunk [0x00007FFACEEF7614+20]
+	RtlUserThreadStart [0x00007FFACF7E26B1+33]
+</status>
+</test>
+<doc>To validate the shopping page</doc>
+<status status="FAIL" starttime="20231110 17:25:43.335" endtime="20231110 17:27:38.442"/>
+</suite>
+<status status="FAIL" starttime="20231110 17:25:43.179" endtime="20231110 17:27:38.448"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">Feature1</stat>
+<stat pass="1" fail="1" skip="0">Regression</stat>
+<stat pass="1" fail="0" skip="0">Smoke</stat>
+</tag>
+<suite>
+<stat pass="1" fail="2" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="2" skip="0" id="s1-s1" name="testDemo6">Tests.testDemo6</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

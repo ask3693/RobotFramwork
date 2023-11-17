@@ -1,0 +1,35 @@
+==============================================================================
+Tests                                                                         
+==============================================================================
+Tests.testDemo5 :: To demonstrate csv handling within robot framework         
+==============================================================================
+Invalid username                                                      | PASS |
+------------------------------------------------------------------------------
+Invalid pwd                                                             
+  Traceback (most recent call last):
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  D:\Learning\RobotFramework Learning\tests\testDemo5.robot:14
+    T:  Invalid pwd    
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  D:\Learning\RobotFramework Learning\tests\testDemo5.robot:0
+      Unsuccessful login    rahulshetty    syedalisk
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  D:\Learning\RobotFramework Learning\tests\testDemo5.robot:25
+      Validate the error message    
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  D:\Learning\RobotFramework Learning\tests\testDemo5.robot:41
+      Element Text Should Be    ${Login_Error_Message}    Incorrect username/password.
+      |  ${Login_Error_Message} = css:.alert-danger (str)
+______________________________________________________________________________
+| FAIL |
+The text of element 'css:.alert-danger' should have been 'Incorrect username/password.' but it was ''.
+------------------------------------------------------------------------------
+Special Characters usrnm                                              | PASS |
+------------------------------------------------------------------------------
+Tests.testDemo5 :: To demonstrate csv handling within robot framework | FAIL |
+3 tests, 2 passed, 1 failed
+==============================================================================
+Tests                                                                 | FAIL |
+3 tests, 2 passed, 1 failed
+==============================================================================
+Output:  D:\Learning\RobotFramework Learning\tests\pabot_results\4\output.xml

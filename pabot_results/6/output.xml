@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231110 17:25:43.129" rpa="false" schemaversion="4">
+<suite id="s1" name="Tests" source="D:\Learning\RobotFramework Learning\tests">
+<suite id="s1-s1" name="testDemo7" source="D:\Learning\RobotFramework Learning\tests\testDemo7.robot">
+<test id="s1-s1-t1" name="Play around with dictionary" line="10">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{data}</var>
+<arg>name=Ali</arg>
+<arg>course=robot</arg>
+<arg>website=rahulshettyacademy.com</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231110 17:25:44.962" level="INFO">&amp;{data} = { name=Ali | course=robot | website=rahulshettyacademy.com }</msg>
+<status status="PASS" starttime="20231110 17:25:44.958" endtime="20231110 17:25:44.962"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231110 17:25:44.965" level="INFO">{'name': 'Ali', 'course': 'robot', 'website': 'rahulshettyacademy.com'}</msg>
+<status status="PASS" starttime="20231110 17:25:44.963" endtime="20231110 17:25:44.966"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${data}</arg>
+<arg>name</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20231110 17:25:44.966" endtime="20231110 17:25:44.968"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${data}[name]</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231110 17:25:44.972" level="INFO">Ali</msg>
+<status status="PASS" starttime="20231110 17:25:44.968" endtime="20231110 17:25:44.972"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${URL}</var>
+<arg>${data}</arg>
+<arg>website</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20231110 17:25:44.980" level="INFO">${URL} = rahulshettyacademy.com</msg>
+<status status="PASS" starttime="20231110 17:25:44.973" endtime="20231110 17:25:44.980"/>
+</kw>
+<tag>API</tag>
+<status status="PASS" starttime="20231110 17:25:44.956" endtime="20231110 17:25:44.982"/>
+</test>
+<test id="s1-s1-t2" name="Add book into library" line="18">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{data2}</var>
+<arg>name=RobotFramework</arg>
+<arg>isbn=921371</arg>
+<arg>aisle=120012</arg>
+<arg>author=AliSharjeel</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231110 17:25:44.991" level="INFO">&amp;{data2} = { name=RobotFramework | isbn=921371 | aisle=120012 | author=AliSharjeel }</msg>
+<status status="PASS" starttime="20231110 17:25:44.987" endtime="20231110 17:25:44.992"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${base_url}/Library/Addbook.php</arg>
+<arg>json=${data2}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20231110 17:25:51.295" level="INFO">POST Request : url=https://rahulshettyacademy.com/Library/Addbook.php 
+ path_url=/Library/Addbook.php 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '88', 'Content-Type': 'application/json'} 
+ body=b'{"name": "RobotFramework", "isbn": "921371", "aisle": "120012", "author": "AliSharjeel"}' 
+ </msg>
+<msg timestamp="20231110 17:25:51.296" level="INFO">POST Response : url=https://rahulshettyacademy.com/Library/Addbook.php 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 10 Nov 2023 12:25:48 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Max-Age': '3600', 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With', 'Content-Length': '49', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json;charset=UTF-8'} 
+ body={"Msg":"Book Already Exists","ID":"921371120012"} 
+ </msg>
+<msg timestamp="20231110 17:25:51.296" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231110 17:25:45.062" endtime="20231110 17:25:51.296"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231110 17:25:51.299" level="INFO">{'Msg': 'Book Already Exists', 'ID': '921371120012'}</msg>
+<status status="PASS" starttime="20231110 17:25:51.297" endtime="20231110 17:25:51.299"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>ID</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20231110 17:25:51.299" endtime="20231110 17:25:51.302"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${book_id}</var>
+<arg>${response.json()}</arg>
+<arg>ID</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20231110 17:25:51.305" level="INFO">${book_id} = 921371120012</msg>
+<status status="PASS" starttime="20231110 17:25:51.302" endtime="20231110 17:25:51.305"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${book_id}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20231110 17:25:51.306" level="INFO">${book_id} = 921371120012</msg>
+<status status="PASS" starttime="20231110 17:25:51.305" endtime="20231110 17:25:51.306"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${book_id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231110 17:25:51.308" level="INFO">921371120012</msg>
+<status status="PASS" starttime="20231110 17:25:51.307" endtime="20231110 17:25:51.308"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>successfully added</arg>
+<arg>${response.json()}[Msg]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20231110 17:25:51.311" level="FAIL">successfully added != Book Already Exists</msg>
+<status status="FAIL" starttime="20231110 17:25:51.308" endtime="20231110 17:25:51.311"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" starttime="20231110 17:25:51.313" endtime="20231110 17:25:51.314"/>
+</kw>
+<tag>API</tag>
+<status status="FAIL" starttime="20231110 17:25:44.986" endtime="20231110 17:25:51.314">successfully added != Book Already Exists</status>
+</test>
+<test id="s1-s1-t3" name="Get the book details added" line="30">
+<kw name="GET" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>${base_url}/Library/Getbook.php</arg>
+<arg>params=ID=${book_id}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20231110 17:25:53.978" level="INFO">GET Request : url=https://rahulshettyacademy.com/Library/Getbook.php?ID=921371120012 
+ path_url=/Library/Getbook.php?ID=921371120012 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20231110 17:25:53.978" level="INFO">GET Response : url=https://rahulshettyacademy.com/Library/Getbook.php?ID=921371120012 
+ status=404, reason=Not Found 
+ headers={'Date': 'Fri, 10 Nov 2023 12:25:51 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'Cache-Control': 'no-cache, private', 'Connection': 'close', 'Content-Type': 'text/html; charset=UTF-8'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+        &lt;title&gt;Not Found&lt;/title&gt;
+
+        &lt;!-- Fonts --&gt;
+        &lt;link rel="preconnect" href="https://fonts.gstatic.com"&gt;
+        &lt;link href="https://fonts.googleapis.com/css2?family=Nunito&amp;display=swap" rel="stylesheet"&gt;
+
+        &lt;style&gt;
+            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}code{font-family:monospace,monospace;font-size:1em}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}code{font-family:Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-gray-400{--border-opacity:1;border-color:#cbd5e0;border-color:rgba(203,213,224,var(--border-opacity))}.border-t{border-top-width:1px}.border-r{border-right-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-xl{max-width:36rem}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.uppercase{text-transform:uppercase}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.tracking-wider{letter-spacing:.05em}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@-webkit-keyframes spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@keyframes  spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@-webkit-keyframes ping{0%{transform:scale(1);opacity:1}75%,to{transform:scale(2);opacity:0}}@keyframes  ping{0%{transform:scale(1);opacity:1}75%,to{transform:scale(2);opacity:0}}@-webkit-keyframes pulse{0%,to{opacity:1}50%{opacity:.5}}@keyframes  pulse{0%,to{opacity:1}50%{opacity:.5}}@-webkit-keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:translateY(0);-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@keyframes  bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:translateY(0);-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}
+        &lt;/style&gt;
+
+        &lt;style&gt;
+            body {
+                font-family: 'Nunito', sans-serif;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body class="antialiased"&gt;
+        &lt;div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"&gt;
+            &lt;div class="max-w-xl mx-auto sm:px-6 lg:px-8"&gt;
+                &lt;div class="flex items-center pt-8 sm:justify-start sm:pt-0"&gt;
+                    &lt;div class="px-4 text-lg text-gray-500 border-r border-gray-400 tracking-wider"&gt;
+                        404                    &lt;/div&gt;
+
+                    &lt;div class="ml-4 text-lg text-gray-500 uppercase tracking-wider"&gt;
+                        Not Found                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+ 
+ </msg>
+<msg timestamp="20231110 17:25:53.978" level="FAIL">HTTPError: 404 Client Error: Not Found for url: https://rahulshettyacademy.com/Library/Getbook.php?ID=921371120012</msg>
+<status status="FAIL" starttime="20231110 17:25:51.317" endtime="20231110 17:25:53.986"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${get_response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20231110 17:25:53.986" endtime="20231110 17:25:53.992"/>
+</kw>
+<status status="FAIL" starttime="20231110 17:25:51.315" endtime="20231110 17:25:53.993">HTTPError: 404 Client Error: Not Found for url: https://rahulshettyacademy.com/Library/Getbook.php?ID=921371120012</status>
+</test>
+<test id="s1-s1-t4" name="Delete the book from database" line="34">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{delete_dict}</var>
+<arg>ID=${book_id}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231110 17:25:53.996" level="INFO">&amp;{delete_dict} = { ID=921371120012 }</msg>
+<status status="PASS" starttime="20231110 17:25:53.994" endtime="20231110 17:25:53.996"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${del_response}</var>
+<arg>${base_url}/Library/Deletebook.php</arg>
+<arg>json=&amp;{delete_dict}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20231110 17:26:02.983" level="INFO">POST Request : url=https://rahulshettyacademy.com/Library/Deletebook.php 
+ path_url=/Library/Deletebook.php 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '22', 'Content-Type': 'application/json'} 
+ body=b'{"ID": "921371120012"}' 
+ </msg>
+<msg timestamp="20231110 17:26:02.983" level="INFO">POST Response : url=https://rahulshettyacademy.com/Library/Deletebook.php 
+ status=404, reason=Not Found 
+ headers={'Date': 'Fri, 10 Nov 2023 12:25:58 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'Cache-Control': 'no-cache, private', 'Connection': 'close', 'Content-Type': 'text/html; charset=UTF-8'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+        &lt;title&gt;Not Found&lt;/title&gt;
+
+        &lt;!-- Fonts --&gt;
+        &lt;link rel="preconnect" href="https://fonts.gstatic.com"&gt;
+        &lt;link href="https://fonts.googleapis.com/css2?family=Nunito&amp;display=swap" rel="stylesheet"&gt;
+
+        &lt;style&gt;
+            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}code{font-family:monospace,monospace;font-size:1em}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}code{font-family:Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-gray-400{--border-opacity:1;border-color:#cbd5e0;border-color:rgba(203,213,224,var(--border-opacity))}.border-t{border-top-width:1px}.border-r{border-right-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-xl{max-width:36rem}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.uppercase{text-transform:uppercase}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.tracking-wider{letter-spacing:.05em}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@-webkit-keyframes spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@keyframes  spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@-webkit-keyframes ping{0%{transform:scale(1);opacity:1}75%,to{transform:scale(2);opacity:0}}@keyframes  ping{0%{transform:scale(1);opacity:1}75%,to{transform:scale(2);opacity:0}}@-webkit-keyframes pulse{0%,to{opacity:1}50%{opacity:.5}}@keyframes  pulse{0%,to{opacity:1}50%{opacity:.5}}@-webkit-keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:translateY(0);-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@keyframes  bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:translateY(0);-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}
+        &lt;/style&gt;
+
+        &lt;style&gt;
+            body {
+                font-family: 'Nunito', sans-serif;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body class="antialiased"&gt;
+        &lt;div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"&gt;
+            &lt;div class="max-w-xl mx-auto sm:px-6 lg:px-8"&gt;
+                &lt;div class="flex items-center pt-8 sm:justify-start sm:pt-0"&gt;
+                    &lt;div class="px-4 text-lg text-gray-500 border-r border-gray-400 tracking-wider"&gt;
+                        404                    &lt;/div&gt;
+
+                    &lt;div class="ml-4 text-lg text-gray-500 uppercase tracking-wider"&gt;
+                        Not Found                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+ 
+ </msg>
+<msg timestamp="20231110 17:26:02.984" level="FAIL">Url: https://rahulshettyacademy.com/Library/Deletebook.php Expected status: 404 != 200</msg>
+<status status="FAIL" starttime="20231110 17:25:53.996" endtime="20231110 17:26:02.989"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${del_response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20231110 17:26:02.991" endtime="20231110 17:26:02.991"/>
+</kw>
+<status status="FAIL" starttime="20231110 17:25:53.994" endtime="20231110 17:26:02.992">Url: https://rahulshettyacademy.com/Library/Deletebook.php Expected status: 404 != 200</status>
+</test>
+<status status="FAIL" starttime="20231110 17:25:43.399" endtime="20231110 17:26:02.993"/>
+</suite>
+<status status="FAIL" starttime="20231110 17:25:43.241" endtime="20231110 17:26:02.994"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="1" skip="0">API</stat>
+</tag>
+<suite>
+<stat pass="1" fail="3" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="3" skip="0" id="s1-s1" name="testDemo7">Tests.testDemo7</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
