@@ -29,7 +29,7 @@ Validate cards displayed in the shopping page
 	LandingPage.Fill The Login Form         ${UserName}     ${pwd_valid}
 	Generic.Wait until Element is located on the page
     ShopPage.Verify card titles in the shop page
-   # Select the card     Blackberry
+    Select the card     Blackberry
     Hello World
     Add Items To Cart And Checkout      ${listofProducts}
     Verify Items in the cart and proceed    ${listofProducts}
