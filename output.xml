@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231102 15:09:09.433" rpa="false" schemaversion="4">
+<suite id="s1" name="RobotFramework Learning" source="D:\Learning\RobotFramework Learning">
+<suite id="s1-s1" name="Tests" source="D:\Learning\RobotFramework Learning\tests">
+<suite id="s1-s1-s1" name="testDemo6" source="D:\Learning\RobotFramework Learning\tests\testDemo6.robot">
+<test id="s1-s1-s1-t1" name="Unsuccessful login validation" line="21">
+<kw name="Open The Browser With This URL" library="Generic" type="SETUP">
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20231102 15:09:09.774" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20231102 15:09:09.773" endtime="20231102 15:09:12.658"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20231102 15:09:12.658" level="INFO">Opening url 'https://rahulshettyacademy.com/loginpagePractise/'</msg>
+<status status="PASS" starttime="20231102 15:09:12.658" endtime="20231102 15:09:14.864"/>
+</kw>
+<status status="PASS" starttime="20231102 15:09:09.773" endtime="20231102 15:09:14.864"/>
+</kw>
+<kw name="Fill the login form" library="LandingPage">
+<arg>${UserName}</arg>
+<arg>${pwd_wrong}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231102 15:09:14.866" level="INFO">Typing text 'rahulshettyacademy' into text field 'id:username'.</msg>
+<status status="PASS" starttime="20231102 15:09:14.865" endtime="20231102 15:09:15.039"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>id:password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20231102 15:09:15.040" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg timestamp="20231102 15:09:15.079" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20231102 15:09:15.127" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20231102 15:09:15.039" endtime="20231102 15:09:15.127"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>signInBtn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231102 15:09:15.127" level="INFO">Clicking button 'signInBtn'.</msg>
+<status status="PASS" starttime="20231102 15:09:15.127" endtime="20231102 15:09:15.190"/>
+</kw>
+<status status="PASS" starttime="20231102 15:09:14.864" endtime="20231102 15:09:15.190"/>
+</kw>
+<kw name="Wait until Element is located on the page" library="LandingPage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${Login_Error_Message}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20231102 15:09:15.190" endtime="20231102 15:09:17.340"/>
+</kw>
+<status status="PASS" starttime="20231102 15:09:15.190" endtime="20231102 15:09:17.340"/>
+</kw>
+<kw name="Validate the error message" library="LandingPage">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${Login_Error_Message}</arg>
+<arg>Incorrect username/password.</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20231102 15:09:17.344" level="INFO">Verifying element 'css:.alert-danger' contains exact text 'Incorrect username/password.'.</msg>
+<status status="PASS" starttime="20231102 15:09:17.341" endtime="20231102 15:09:17.407"/>
+</kw>
+<status status="PASS" starttime="20231102 15:09:17.340" endtime="20231102 15:09:17.407"/>
+</kw>
+<tag>Regression</tag>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20231102 15:09:09.773" endtime="20231102 15:09:17.408"/>
+</test>
+<doc>To validate the shopping page</doc>
+<status status="PASS" starttime="20231102 15:09:09.502" endtime="20231102 15:09:17.410"/>
+</suite>
+<status status="PASS" starttime="20231102 15:09:09.498" endtime="20231102 15:09:17.413"/>
+</suite>
+<status status="PASS" starttime="20231102 15:09:09.435" endtime="20231102 15:09:17.415"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Regression</stat>
+<stat pass="1" fail="0" skip="0">Smoke</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="RobotFramework Learning">RobotFramework Learning</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">RobotFramework Learning.Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="testDemo6">RobotFramework Learning.Tests.testDemo6</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
